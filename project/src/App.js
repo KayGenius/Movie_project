@@ -8,16 +8,20 @@ import SgModal from "./compo/signupmodal";
 import LgModal from "./compo/loginmodal";
 import $ from "jquery";
 
+
+
 export let Context = createContext();
 
 
 function App() {
   const [data, setdata] = useState([]);
   const [title, settitle] = useState("");
+  const [Search,setSearch] =useState("")
   const [movieID, setmovieID] = useState(0);
   const [videoID, setvideoID] = useState(0);
   const [JoinModal,setJoinModal] = useState(0)
   const [LoginModal,setLoginModal] = useState(0)
+  const [MoreModal,setMoreModal] = useState(0)
   const [User,setUser] =useState('')
 
 
@@ -26,7 +30,7 @@ function App() {
     axios.post("/api/movie", { data: title }).then((x) => {
       return (
         setdata(x.data.results[0]),
-        console.log(x.data.results[0]),
+        console.log('무슨영화들 받아오냐',x.data.results),
         setmovieID(x.data.results[0])
       );
     });
@@ -47,7 +51,7 @@ function App() {
   return (
    
     <>
-    <Context.Provider value={{setJoinModal,setLoginModal,setUser,User}}>
+    <Context.Provider value={{setJoinModal,setLoginModal,setUser,User,data,setMoreModal,MoreModal,Search,setSearch}}>
 
       {data != undefined ? (
         <div
@@ -59,6 +63,7 @@ function App() {
           <Header></Header>
           {LoginModal == 1 ?<LgModal></LgModal>:null}
           {JoinModal == 1 ?<SgModal></SgModal>:null}
+        
           <div className="backdrop"></div>
           <Main settitle={settitle} video={videoID} img={data}></Main>
         </div>
