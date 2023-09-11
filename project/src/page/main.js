@@ -2,8 +2,11 @@ import React from "react";
 import Navbar from "../compo/navbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { useEffect } from "react";
+import { useEffect,useContext } from "react";
 import $ from "jquery";
+import Moremodal from "../compo/moremodal";
+import { Context } from "../App";
+
 
 <FontAwesomeIcon icon="fa-solid fa-star" style={{ color: "#f39512" }} />;
 
@@ -12,6 +15,7 @@ import $ from "jquery";
 
 
 const Main = (props) => {
+  const {setMoreModal,MoreModal} = useContext(Context)
   let starvalue = props.img.vote_average;
   
   const vote = () => {
@@ -63,12 +67,6 @@ const Main = (props) => {
     }
   };
 
-  // useEffect(() => {
-         
-  //           setTimeout(()=>{Canvas()},2000)
-
-
-  // }, []);
 
   
   const delUpdown=()=>{
@@ -83,7 +81,6 @@ useEffect(()=>{
     <div className="movie-box updown">
       <div>
         <img
-          
           src={`https://image.tmdb.org/t/p/w500${props.img.poster_path}`}
           className="movie-img"
         ></img>
@@ -99,9 +96,9 @@ useEffect(()=>{
         </h3>
         <p className="movie-content_overview">
           {overview(props.img.overview)}. . .{" "}
-          <button className="movie-content_overview_btn">더보기</button>
+          <button className="movie-content_overview_btn" onClick={()=>setMoreModal(MoreModal+1)}>더보기</button>
         </p>
-
+        {MoreModal===0? null:<Moremodal></Moremodal>}
         <div className="movie-content_video">
           <iframe
             width="100%"

@@ -81,6 +81,24 @@ app.post('/api/signup',(req,res)=>{
   })
 })
 
+app.post('/api/search',(req,res)=>{
+    console.log(req.body.search)
+  const url = 'https://api.themoviedb.org/3/search/movie?query=%ED%85%8C%EB%84%B7&include_adult=false&language=ko&page=1';
+const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZGY3MzVkMjg1ODQ3NWU4MGFiMTMzODk1Y2VlZTlkMyIsInN1YiI6IjY0ZjMxNDViNzdkMjNiMDBjYjg3MTA1YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Z-E0Cizv8nDJJccSkhgLqH0Fy9V_FxCLHaLvFz_m9Jk'
+  }
+};
+
+fetch(url, options)
+  .then(res => res.json())
+  .then(json => console.log(json))
+  .catch(err => console.error('error:' + err));
+
+})
+
 app.post('/api/login',(req,res)=>{
   let {id,pw} = req.body
   let sql ="select * from user where user_id=? and user_pw = ?"
