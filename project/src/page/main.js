@@ -7,15 +7,17 @@ import $ from "jquery";
 import Moremodal from "../compo/moremodal";
 import { Context } from "../App";
 
+
 <FontAwesomeIcon icon="fa-solid fa-star" style={{ color: "#f39512" }} />;
+
+//수정중
 
 
 
 const Main = (props) => {
   const {setMoreModal,MoreModal} = useContext(Context)
   let starvalue = props.img.vote_average;
-
-
+  
   const vote = () => {
     let array = [1, 2, 3];
 
@@ -108,7 +110,6 @@ useEffect(()=>{
             allowFullScreen
           ></iframe>
         </div>
-        
       </div>
     </div>
   );

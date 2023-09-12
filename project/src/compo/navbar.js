@@ -10,9 +10,6 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 const Navbar = (props) => {
 
   let { User,Search,setSearch } = useContext(Context)
-  // useEffect(()=>{axios.post('/api/search',{search:Search})
-
-  // })
 
   return (
     <div className='navbar'>
@@ -30,9 +27,6 @@ const Navbar = (props) => {
           <img className='navbar-input-img' src='/img/search.png'></img>
         </button>
 
-          {/* <div className='navbar-search'>
-                <p>내용들어갈 거</p>
-          </div> */}
       </div>
     </div >
   )
