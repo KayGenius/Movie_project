@@ -10,8 +10,6 @@ import { Context } from "../App";
 
 <FontAwesomeIcon icon="fa-solid fa-star" style={{ color: "#f39512" }} />;
 
-//수정중
-
 
 
 const Main = (props) => {
@@ -122,20 +120,20 @@ const overview = (data) => {
 };
 
 
-const Canvas = ()=> {
+// const Canvas = ()=> {
        
-        var image =  document.querySelector('.movie-img');
+//         var image =  document.querySelector('.movie-img');
        
-        var fixedX = 50; // 원하는 x 좌표
-        var fixedY = 100;  // 원하는 y 좌표
-        var canvas = document.createElement('canvas');
-        canvas.width = image.width;
-        canvas.height = image.height;
-        var ctx = canvas.getContext('2d');
-        ctx.drawImage(image, 0, 0);
-        var pixelData = ctx.getImageData(fixedX, fixedY, 1, 1).data;
-        var rgbaValue = `rgba(${pixelData[0]},${pixelData[1]},${pixelData[2]},${(pixelData[0]/255).toFixed(2)})`
-        console.log(rgbaValue)
-}
+//         var fixedX = 50; // 원하는 x 좌표
+//         var fixedY = 100;  // 원하는 y 좌표
+//         var canvas = document.createElement('canvas');
+//         canvas.width = image.width;
+//         canvas.height = image.height;
+//         var ctx = canvas.getContext('2d');
+//         ctx.drawImage(image, 0, 0);
+//         var pixelData = ctx.getImageData(fixedX, fixedY, 1, 1).data;
+//         var rgbaValue = `rgba(${pixelData[0]},${pixelData[1]},${pixelData[2]},${(pixelData[0]/255).toFixed(2)})`
+//         console.log(rgbaValue)
+// }
 
 export default Main;
