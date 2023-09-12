@@ -6,7 +6,7 @@ import First from "./page/first";
 import Header from "./compo/header";
 import SgModal from "./compo/signupmodal";
 import LgModal from "./compo/loginmodal";
-import $ from "jquery";
+
 
 
 
@@ -37,10 +37,8 @@ function App() {
   }, [title]);
 
   useEffect(() => {
-    if (title != '') {
+    if (title !== '') {
       axios.post("/api/video", { video: movieID }).then((x) => {
-    
-      
         return (
           console.log(x.data.results[0]), setvideoID(x.data.results[0].key)
         ); //배열로 저장됨.
@@ -53,7 +51,7 @@ function App() {
     <>
     <Context.Provider value={{setJoinModal,setLoginModal,setUser,User,data,setMoreModal,MoreModal,Search,setSearch}}>
 
-      {data != undefined ? (
+      {data !== undefined ? (
         <div
           className="main"
           style={{
@@ -61,8 +59,8 @@ function App() {
           }}
         >
           <Header></Header>
-          {LoginModal == 1 ?<LgModal></LgModal>:null}
-          {JoinModal == 1 ?<SgModal></SgModal>:null}
+          {LoginModal === 1 ?<LgModal></LgModal>:null}
+          {JoinModal === 1 ?<SgModal></SgModal>:null}
         
           <div className="backdrop"></div>
           <Main settitle={settitle} video={videoID} img={data}></Main>
@@ -72,8 +70,8 @@ function App() {
          
           <div className="backdrop"></div>
           <Header></Header>
-          {LoginModal == 1 ?<LgModal></LgModal>:null}
-          {JoinModal == 1 ?<SgModal></SgModal>:null}
+          {LoginModal === 1 ?<LgModal></LgModal>:null}
+          {JoinModal === 1 ?<SgModal></SgModal>:null}
           <First settitle={settitle}></First>
         </div>
       )}

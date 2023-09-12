@@ -1,8 +1,6 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect} from "react";
 import { Context } from "../App";
 import React from 'react'
-import axios from "axios";
-import { fas } from "@fortawesome/free-solid-svg-icons";
 
 
 
@@ -10,6 +8,8 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 const Navbar = (props) => {
 
   let { User,Search,setSearch } = useContext(Context)
+
+
 
   return (
     <div className='navbar'>
