@@ -6,15 +6,16 @@ import First from "./page/first";
 import Header from "./compo/header";
 import SgModal from "./compo/signupmodal";
 import LgModal from "./compo/loginmodal";
-
-
+import { useSelector, useDispatch } from "react-redux"
+import {setdata}  from './store.js';
 
 
 export let Context = createContext();
 
 
 function App() {
-  const [data, setdata] = useState([]);
+    const dispatch = useDispatch()
+  let data = useSelector((state)=> console.log('무슨값이냐',state))
   const [title, settitle] = useState("");
   const [Search,setSearch] =useState("")
   const [movieID, setmovieID] = useState(0);
@@ -23,13 +24,13 @@ function App() {
   const [LoginModal,setLoginModal] = useState(0)
   const [MoreModal,setMoreModal] = useState(0)
   const [User,setUser] =useState('')
-
-
+  
+    console.log('data값뭐냐',data)
 
   useEffect(() => {
     axios.post("/api/movie", { data: title }).then((x) => {
       return (
-        setdata(x.data.results[0]),
+        dispatch(setdata(x.data.results[0])),
         console.log('무슨영화들 받아오냐',x.data.results),
         setmovieID(x.data.results[0])
       );
